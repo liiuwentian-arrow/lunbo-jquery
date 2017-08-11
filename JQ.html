@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css">
+		.igw{
+			
+			position: relative;
+			
+		}
+		
+		.ig{
+			
+			/*z-index: 100;*/
+			position: absolute;
+			
+		}	
+	
+	
+	.btn1,.btn2{
+		
+		width: 30px;
+		height: 60px;
+		background: red;
+		text-align: center;
+		line-height: 60px;
+		/*float: left;*/
+		position: absolute;
+		margin-top: 110px;
+		z-index: 999;
+		cursor: pointer
+		
+	}
+	
+	
+	.btn2{
+		
+		margin-left:490px ;
+		
+	}
+	.tabs{
+		
+		
+		width: 200px;
+		height: 30px;
+	/*	border: 1px solid;*/
+		position: absolute;
+		top: 250px;
+		left: 200px;
+	}
+	.tabs .tab{
+		
+		
+		width: 30px;
+		height: 30px;
+		border-radius:50% ;
+		text-align: center;
+		line-height: 30px;
+		color: white;
+		background: blue;
+		float: left;
+		
+		
+		
+	}
+	
+ .tabs .bg{
+  	
+  	
+  	background: red;
+  }
+			
+		</style>
+	</head>
+	<body>
+		
+			
+<div id="igw">
+	
+		        
+		        
+		      
+				
+				<div class="ig"><img src="img/01.jpg"/></div>
+				<div class="ig"><img src="img/02.jpg"/></div>
+				<div class="ig"><img src="img/03.jpg"/></div>
+				<div class="ig"><img src="img/04.jpg"/></div>
+				<div class="ig"><img src="img/05.jpg"/></div>
+				<div class="ig"><img src="img/06.png"/></div>
+				
+			</div>
+	<div class="btn1"><</div>
+		        <div class="btn2">></div>
+		
+		  <div class="tabs">
+	
+		<div class="tab  bg">1</div>
+		<div class="tab">2</div>
+		<div class="tab">3</div>
+		<div class="tab">4</div>
+		<div class="tab">5</div>
+		<div class="tab">6</div>
+		</div>
+		
+		<!--<div class="clear">
+			
+		</div>-->
+		<script type="text/javascript">
+			$(function(){
+				
+				var i=0;
+			
+				$('.ig').eq(0).show().siblings().hide();
+				
+				showtime();
+				
+		
+				$('.tab').hover(function(){
+					
+					i=$(this).index()
+					
+					show();
+					
+					clearInterval(time1);
+					showtime()
+					
+				})
+				
+				
+				
+				$('.btn1').click(function(){
+					
+					
+					i--;
+					if(i<0){
+						
+						
+						i=5;
+						
+					}
+					
+					show();
+					clearInterval(time1);
+					showtime()
+				})
+				
+				
+				$('.btn2').click(function(){
+					
+					
+					i++;
+					if(i>5){
+						
+						
+						i=0;
+						
+					}
+					
+					show();
+					clearInterval(time1);
+					showtime()
+				})
+				
+				
+				
+				
+				function show(){
+					
+					
+				  	$('.ig').eq(i).fadeIn(300).siblings().fadeOut(300);
+					$('.tab').eq(i).addClass('bg').siblings().removeClass('bg');
+					
+					
+				}
+					
+			
+			
+			
+			function showtime(){
+				
+				time1=setInterval(function(){
+					
+					
+					i++;
+		
+		if(i==6){
+			
+			
+			i=0;
+			
+			
+		}
+					
+		 show();	
+					
+					
+				} ,3000 )
+				
+			}
+					
+	
+				
+				
+				
+				
+				
+				
+			})
+			
+			
+		
+
+
+			
+		</script>
+		
+		
+		
+	</body>
+</html>
